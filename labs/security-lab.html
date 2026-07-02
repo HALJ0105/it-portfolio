@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Security Lab — Hussam Al-Jeboury</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap">
+    <div class="brand"><span class="prompt">&gt;</span>hussam@portfolio</div>
+    <nav class="top">
+      <a href="../index.html">Home</a>
+      <a href="https://github.com/HALJ0105" target="_blank" rel="noopener">GitHub</a>
+    </nav>
+  </div>
+</header>
+
+<section class="lab-header">
+  <div class="wrap">
+    <a class="back" href="../index.html">&larr; all labs</a>
+    <h1>Security Lab — Offensive &amp; Defensive Cybersecurity</h1>
+    <p class="summary">
+      Designed a virtual cybersecurity lab to simulate real-world attack scenarios,
+      including reconnaissance, offline password cracking, and network traffic analysis,
+      within an isolated environment.
+    </p>
+    <div class="meta-row">
+      <span>VMware Workstation Player</span>
+      <span>Windows 11 Pro (target)</span>
+      <span>Kali Linux (attacker)</span>
+      <span>Nmap</span>
+      <span>John the Ripper</span>
+      <span>Wireshark</span>
+      <span>Metasploit</span>
+    </div>
+  </div>
+</section>
+
+<article class="lab-body">
+  <div class="wrap">
+
+    <h2>Lab Environment &amp; Setup</h2>
+    <ul>
+      <li>VMware Workstation Player hosting all operating systems used in the lab.</li>
+      <li>Windows 11 Pro VM configured as the target client being attacked.</li>
+      <li>Kali Linux VM configured as the attacker machine.</li>
+      <li>Private virtual network between the two VMs — two-way communication enabled, internet access disabled, following isolated lab best practice.</li>
+      <li>Tools used: Metasploitable 3, Command Prompt, Windows PowerShell, Linux Terminal, Wireshark, Metasploit.</li>
+    </ul>
+
+    <h2>Attacks Completed</h2>
+
+    <div class="scenario">
+      <h3>Attack 1 — Reconnaissance / Scanning</h3>
+      <p class="objective"><b>Objective:</b> Enumerate services running on the Windows target.</p>
+      <p class="objective"><b>Tools:</b> nmap, netcat</p>
+      <p class="result"><b>Result:</b> Identified open ports and running services on the Windows 11 VM, including OS fingerprinting via <code>nmap -sV -O</code>.</p>
+  <div class="shot">
+    <img src="../screenshots/security-1.png"
+         alt="Ping test between the domain controller and Windows clients">
+    <img src= "../screenshots/security-1-2.png" class = "img-margin">
+  </div>
+    <p class="shot-caption">
+  Figure 1. Nmap scan results showing open ports and detected services on the Windows 11 target, including OS and service version enumeration.    </p>
+  </div>
+
+    <div class="scenario">
+      <h3>Attack 2 — Offline NTLM Password Cracking</h3>
+      <p class="objective"><b>Objective:</b> Attempt to crack a password offline using captured Windows NTLM hashes.</p>
+      <p class="objective"><b>Tools:</b> John the Ripper</p>
+      <p class="result"><b>Result:</b> Successfully cracked a hashed password via a simulated dictionary attack (<code>john --format=NT hashes.txt --wordlist=rockyou.txt</code>), recovering the username and cracked password.</p>
+      <div class="note">
+        Note: the cracked credential was an intentionally weak password set up for this exercise, used to demonstrate offline hash-cracking methodology in a controlled, isolated lab — not a live or production account.
+      </div>
+  <div class="shot">
+    <img src="../screenshots/security-2.png"
+         alt="Ping test between the domain controller and Windows clients">
+    <img src="../screenshots/security-2-2.png" class= "img-margin">
+
+  </div>
+    <p class="shot-caption">
+    Figure 2. John the Ripper output showing successful cracking of NTLM password hashes using a dictionary-based attack with the rockyou wordlist.
+    </p>
+  </div>
+
+    <div class="scenario">
+      <h3>Attack 3 — Network Monitoring &amp; Sniffing</h3>
+      <p class="objective"><b>Objective:</b> Capture and analyze network traffic between lab machines.</p>
+      <p class="objective"><b>Tools:</b> Wireshark, tcpdump</p>
+      <p class="result"><b>Result:</b> Captured and analyzed live traffic in Wireshark, including ICMP echo request/reply pairs confirming connectivity between hosts.</p>
+           <div class="shot">
+    <img src="../screenshots/security-3.png"
+         alt="Ping test between the domain controller and Windows clients">
+      </div>
+        <p class="shot-caption">
+          Figure 3. Wireshark packet capture displaying ICMP echo requests and replies between lab hosts, confirming active network communication.
+        </p>
+    </div>
+
+    <h2>Skills Gained</h2>
+    <ul>
+      <li>Network reconnaissance and port/service enumeration</li>
+      <li>Offline password hash cracking methodology</li>
+      <li>Packet capture and traffic analysis</li>
+      <li>Building and isolating a safe, internet-disconnected attacker/target lab environment</li>
+    </ul>
+
+    <h2>Key Takeaway</h2>
+    <p>
+      This lab reinforced how attackers gather information and exploit weak credentials —
+      knowledge that directly informs stronger help desk security practices, from password
+      policy guidance to recognizing early signs of reconnaissance activity on a network.
+    </p>
+
+  </div>
+</article>
+
+<footer class="site">
+  <div class="wrap">
+    <span>Hussam Al-Jeboury — Windsor, ON</span>
+    <a href="../index.html">&larr; back to all labs</a>
+  </div>
+</footer>
+
+</body>
+</html>
