@@ -25,29 +25,103 @@
     <a class="back" href="../index.html">&larr; all labs</a>
     <h1>Ticketing System Lab</h1>
     <p class="summary">
-      A simulated help desk ticket queue with SLA-based priority tiers and escalation paths,
-      tied back to issues resolved in the Help Desk Lab. In progress.
+      Built a simulated IT service desk in Jira Service Management, covering the full
+      ticket lifecycle — customer submission through the portal, triage, SLA tracking,
+      internal diagnosis, and customer-facing resolution — across multiple simulated
+      users and issue types.
     </p>
     <div class="meta-row">
-      <span>JIRA Service Management</span>
+      <span>Jira Service Management</span>
       <span>SLA Management</span>
-      <span>Knowledge Base</span>
+      <span>Customer Portal</span>
+      <span>Queue Triage</span>
     </div>
   </div>
 </section>
 
 <article class="lab-body">
   <div class="wrap">
-    <h2>Planned Scope</h2>
+
+    <h2>Lab Environment &amp; Setup</h2>
     <ul>
-      <li>Set up ticket categories, priority levels, and SLA rules in a JIRA Service Management instance.</li>
-      <li>Write knowledge base articles for common resolutions.</li>
-      <li>Simulate a queue of 15–20 tickets across varying severities and work through triage/escalation logic.</li>
-      <li>Tie simulated tickets to real issues from the Help Desk Lab (AD lockouts, GPO conflicts, connectivity) for an end-to-end workflow.</li>
+      <li>Configured an IT Service Desk project (<code>SUP</code>) in Jira Service Management using the built-in ITSM template.</li>
+      <li>Defined request types (Report a system problem, Get IT help) and tiered SLA goals for time-to-first-response and time-to-resolution.</li>
+      <li>Added multiple simulated customer accounts across departments (HR, Finance, Sales, IT) so the queue reflects requests from different users rather than a single reporter.</li>
+      <li>Worked tickets through the full lifecycle: Open &rarr; In Progress &rarr; Resolved, using both internal notes and customer-facing replies.</li>
+      <li>Submitted at least one ticket directly through the customer-facing Help Center portal to capture the full submission-to-resolution loop.</li>
     </ul>
-    <div class="note">
-      This page will be updated with full scenario write-ups and screenshots once the lab is complete.
+
+    <h2>Scenarios Completed</h2>
+
+    <div class="scenario">
+      <h3>Scenario 1 — Portal Submission to Resolution (SUP-20)</h3>
+      <p class="objective"><b>Objective:</b> Handle a request end-to-end, starting from the customer's own submission through the Help Center portal.</p>
+      <ol>
+        <li>Customer ("Sam James") submitted a request via the portal: Task Manager was blocked and needed temporary access to end an unresponsive task, flagged as Medium urgency.</li>
+        <li>Ticket landed in the agent queue as SUP-20 under "Report a system problem," with full request details and urgency visible to the agent.</li>
+        <li>Added an internal note documenting the diagnostic process: investigating and modifying GPO settings for the affected user.</li>
+        <li>Replied to the customer directly, acknowledging the issue and setting expectations while the fix was in progress.</li>
+      </ol>
+      <p class="result"><b>Result:</b> Full request lifecycle captured from the customer's initial submission through internal diagnosis and customer communication — mirroring how a real Tier 1 ticket moves from intake to resolution.</p>
+      <div class="shot-placeholder">
+        [ Add screenshot: portal submission form — e.g. ticketing-01-portal-submit.png ]
+      </div>
+      <div class="shot-placeholder">
+        [ Add screenshot: SUP-20 ticket with internal note + customer reply — e.g. ticketing-02-sup20-thread.png ]
+      </div>
     </div>
+
+    <div class="scenario">
+      <h3>Scenario 2 — Shared Drive Access After Password Reset (SUP-3)</h3>
+      <p class="objective"><b>Objective:</b> Diagnose and resolve a user's inability to access a shared drive following a password reset.</p>
+      <ol>
+        <li>Ticket submitted describing the issue: shared drive inaccessible after a recent password reset, with a note that Group Policy settings may need review.</li>
+        <li>Logged an internal note tracking the diagnostic path: reviewing the user's Group Policy settings and identifying the drive mapping as the root cause.</li>
+        <li>Remapped the shared drive for the affected user.</li>
+        <li>Replied to the customer confirming the fix and asking them to verify access on their end.</li>
+      </ol>
+      <p class="result"><b>Result:</b> Drive access restored; ticket moved to Resolved after customer confirmation, with the full diagnostic trail preserved in ticket history.</p>
+      <div class="shot-placeholder">
+        [ Add screenshot: SUP-3 internal note + customer reply — e.g. ticketing-03-sup3-thread.png ]
+      </div>
+    </div>
+
+    <h2>Queue &amp; SLA Tracking</h2>
+    <p>
+      Tickets were tracked across a live queue spanning multiple request types, priorities,
+      and simulated reporters, with SLA timers visible directly in the queue view and on
+      individual tickets.
+    </p>
+    <div class="shot-placeholder">
+      [ Add screenshot: queue view with varied reporters/statuses — e.g. ticketing-04-queue.png ]
+    </div>
+    <p>
+      The SLA success rate report tracked real performance across resolved tickets rather
+      than a static baseline — including a genuine dip in time-to-first-response on one day
+      where a ticket sat before being triaged, which reinforced the importance of an early
+      acknowledgment reply even before a full fix is in place.
+    </p>
+    <div class="shot-placeholder">
+      [ Add screenshot: SLA success rate report — e.g. ticketing-05-sla-report.png ]
+    </div>
+
+    <h2>Skills Gained</h2>
+    <ul>
+      <li>End-to-end ticket lifecycle management (Open &rarr; In Progress &rarr; Resolved)</li>
+      <li>SLA configuration and monitoring across priority tiers</li>
+      <li>Separating internal diagnostic notes from customer-facing communication</li>
+      <li>Customer portal setup and the end-user submission experience</li>
+      <li>Queue triage across multiple simulated users and request types</li>
+    </ul>
+
+    <h2>Key Takeaway</h2>
+    <p>
+      This lab reinforced that resolving the technical issue is only half of a help desk
+      ticket — clear internal documentation and timely customer communication are what
+      actually keep a queue healthy. Tracking real SLA data, including the moments it
+      slipped, was more useful than a perfect scorecard would have been.
+    </p>
+
   </div>
 </article>
 
